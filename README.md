@@ -13,7 +13,7 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
   - Steps to setup your Raspberry Pi to wifi :
       1. [Install Angry IP Scanner](https://angryip.org/download/). This will allow you to find the IP Address of the Raspberry Pi when connected to your PC.
       2. Open the app and find the Raspberry Pi IP address and copy it.
-      3. Run the following command on your Command Prompt 'ssh pi@IP_ADDRESS'.
+      3. Run the following command on your Command Prompt `ssh pi@IP_ADDRESS`.
 - Use nodes in ROS to send serial commands from Raspberry Pi to Arduino Mega which controls 2 motors in their speeds, direction mode of operation (open loop or closed loop).
 - **Coming up ...** Use the RPlidar to map a room and send serial commands from the Pi to the arduino mega to control the motors accordingly. SLAM (Simultaneous Mapping ans Localization) will be implemented here.
  
