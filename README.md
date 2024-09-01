@@ -15,8 +15,8 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
           3 .Go to the bottom (the last line was  "source /opt/ros/your_workspace/setup.bash" ,
           4. Go under that line and write --> source [YOUR PATH]
           5. Save and exit
-          Now with every new shell you open, it will source automatically launch rviz2 to visulaize your model.
-             -When there's no transform in the left and right wheels, run the following:
+          - Now with every new shell you open, it will source automatically launch rviz2 to visulaize your model.
+             - When there's no transform in the left and right wheels, run the following:
             ``` bash
               ros2 run joint_state_publisher_gui joint_state_publisher_gui
             ```
