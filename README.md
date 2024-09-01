@@ -1,75 +1,125 @@
-# Robotics-Dojo-Technical-Paper-Draft
-Contains all details and steps taken in the design of Robot for the Robotics Dojo 2024 competition.
+# Robotics Dojo Technical Paper Draft
 
-# Progress
-- Designing the 3D model of the robot chassis using Autodesk inventor. [View the image](https://discordapp.com/channels/1109024319046164490/1272787350056996927/1275323132995043359)
-- Installing Docker, pulling the image containing the Robot Operating System(ROS) and creating a container.Follow the steps [here](https://github.com/roboticsdojo/rdj-2024-docker/tree/v1.1.0?tab=readme-ov-file).    A     Another option was setting up Ubuntu natively and installing ROS to your PC. 
-- Creating a 3D model of the robot in ROS.
-      - The .urdf file is used to describe the structure of the robot.
-      - sudo apt install ros-foxy-xacro ros-foxy-joint-state-publisher-gui (to install xacro and joint state publisher gui.
-      - colcon build --symlink-install (allows the package to be built automaticly after editing and needs to be run again only when a new file has been created).
-      - Everytime you make a change you run ( ros2 launch your_package your_launch_file).
-      - The purpose of the source command and how to use it is listed below : 
-          1. Open your terminal
-          2. Write the command --> gedit ~/.bashrc
-            - I file will open on gedit
-          3 .Go to the bottom (the last line was  "source /opt/ros/your_workspace/setup.bash" ,
-          4. Go under that line and write --> source [YOUR PATH]
-          5. Save and exit
-          - Now with every new shell you open, it will source automatically launch rviz2 to visulaize your model.
-          - When there's no transform in the left and right wheels, run the following:
-  ``` bash
-  ros2 run joint_state_publisher_gui joint_state_publisher_gui
+Contains all details and steps taken in the design of the robot for the Robotics Dojo 2024 competition.
+
+## Progress
+
+### 1. Design & Modeling
+- **Chassis Design:** Designing the 3D model of the robot chassis using Autodesk Inventor. [View the image](https://discordapp.com/channels/1109024319046164490/1272787350056996927/1275323132995043359).
+
+### 2. Environment Setup
+- **Option 1: Docker Setup:** Installing Docker, pulling the image containing the Robot Operating System (ROS), and creating a container. Follow the steps [here](https://github.com/roboticsdojo/rdj-2024-docker/tree/v1.1.0?tab=readme-ov-file).
+- **Option 2: Native Setup:** Installing ROS on Ubuntu natively.
+
+### 3. Robot Model Creation in ROS
+- Created a 3D model of the robot in ROS using `.urdf` and `.xacro` files.
+  
+- **Packages Installed:**
+  ```bash
+  sudo apt install ros-foxy-xacro ros-foxy-joint-state-publisher-gui
   ```
-  - Simulate your bot using Gazebo.
 
-- Driving the virtual robot.
-      1. Launch robot_state_publisher in sim mode. (Allows all running nodes to be synchronized with Gazebo).
-      - ros2 launch your_package your_launch_file use_sim_time:=true
-      - Check if it worked by opening a new terminal and running :
-         ``` bash
-        ros2 param get /robot_state_publisher use_sim_time
-         ```
-      2. Launch Gazebo with ROS compatibility Enabled.
-      - sudo apt install ros-foxy-gazebo-ros-pkgs. (install Gazebo).
-      - Start Gazebo.
-        ``` bash
-        ros2 launch gazebo_ros gazebo.launch.py
-        ```
-      3. Spawn robot in Gazebo with spawn script.
-      - Spawn your bot model in Gazebo, but it won't have the right color or be able to move
-         ``` bash
-        ros2 run gazebo_ros spawn_entity.py -topic topic_name -entity your_bot_name
-         ```
-      - Add gazebo references to your xacro files that describe the parts' colors. Use the mul tag inside the gazebo reference to add a small value of friction on parts that require it like castor wheels.      
-      4. ROS2 control.
-      - Create a xacro file for control. Use the gazebo tag around the plugin tag which will contain information of differential driving i.e wheel joint, separation and diameter information, limits and output.      
-      5. Use your keyboard to send motion commands. 
-         ``` bash
-         ros2 run teleop_twist_keyboard teleop_twist_keyboard
-         ```    
-      6. Use RViz to visualise the moving bot in Gazebo.
-      - Launch RViz
-        ``` bash
-        rviz2
-        ``` 
-      - Set your fixed frame to odom
+- Building the Package:
 
-- Use Arduino Mega microcontroller and the L298N motor driver to power a 12V DC motor, control its direction and speed using PWM (Pulse Width Modulation).
-- Find the ratio of revolutions of the encoder to the motor shaft. (1:44)
-- Laser cut the robot chasis by using a 2D drawing of the parts on a [PDF Drawing](https://discordapp.com/channels/1109024319046164490/1272787350056996927/1275471432641679500) and asseble the parts using screws , bolts and glue using glue gun.
-- Learn how to create nodes (Publisher and Subscriber) in ROS that communicate with each other over a topic.
-- Use Rplidar to scan and display a 2D image ,of its environment, in Gazebo.
-- Implement PID control to two motors.
-- Connect the Raspberry Pi through wifi and use the command window to program it. Install Ubuntu on an SD card and plug it to your Pi and install ROS2 in it.
-  - Steps to setup your Raspberry Pi to wifi :
-      1. [Install Angry IP Scanner](https://angryip.org/download/). This will allow you to find the IP Address of the Raspberry Pi when connected to your PC.
-      2. Open the app and find the Raspberry Pi IP address and copy it.
-      3. Run the following command on your Command Prompt
-          ``` bash
-          ssh pi@IP_ADDRESS
-          ```
-      5. You're now in the Pi and can now create and edit the files.
-- Use nodes in ROS to send serial commands from Raspberry Pi to Arduino Mega which controls 2 motors in their speeds, direction mode of operation (open loop or closed loop).
-- **Coming up ...** Use the RPlidar to map a room and send serial commands from the Pi to the arduino mega to control the motors accordingly. SLAM (Simultaneous Mapping ans Localization) will be implemented here.
- 
+   ``` bash
+      colcon build --symlink-install
+   ```
+
+- Launching the Model:
+
+``` bash
+ros2 launch your_package your_launch_file
+```
+
+- Source Command Setup:
+
+    - Open your terminal and run:
+
+   ``` bash
+
+    gedit ~/.bashrc
+   ```
+    - Add source [YOUR PATH] below the line that sources ROS.
+    - Save and exit. Now, with every new shell you open, it will source automatically.
+
+- Joint State Publisher GUI:
+
+``` bash
+    ros2 run joint_state_publisher_gui joint_state_publisher_gui
+```
+4. Simulate the Robot with Gazebo
+
+    - Launch Robot State Publisher in Sim Mode:
+
+   ``` bash
+      ros2 launch your_package your_launch_file use_sim_time:=true
+    ```
+   -  Check if it worked by running:
+
+``` bash
+ros2 param get /robot_state_publisher use_sim_time
+```
+- Install and Launch Gazebo:
+
+``` bash
+sudo apt install ros-foxy-gazebo-ros-pkgs
+ros2 launch gazebo_ros gazebo.launch.py
+```
+- Spawn Robot in Gazebo:
+``` bash
+ros2 run gazebo_ros spawn_entity.py -topic topic_name -entity your_bot_name
+```
+- Add Gazebo References to .xacro Files:
+
+    - Add the <gazebo> tag around parts' descriptions to define properties such as color and friction.
+
+    - Use Keyboard for Teleoperation:
+
+``` bash
+    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+5. Hardware Control with Arduino Mega
+
+    - Powered a 12V DC motor using an Arduino Mega and L298N motor driver.
+
+    - Controlled motor speed and direction using PWM (Pulse Width Modulation).
+
+    - Encoder Ratio: 1:44 (Revolutions of encoder to motor shaft).
+
+6. Physical Assembly
+
+   - Laser cut the chassis using a 2D drawing PDF Drawing.
+   - Assembled parts using screws, bolts, and a glue gun.
+
+7. ROS Communication
+
+    - Created nodes (Publisher and Subscriber) in ROS that communicate over a topic.
+
+8. Mapping & Control with RPLidar
+
+   - Used RPLidar to scan and display a 2D image of the environment in Gazebo.
+   - Implemented PID control for two motors.
+
+9. Raspberry Pi Setup
+
+    - Installed Ubuntu on an SD card and inserted it into the Raspberry Pi.
+
+    - Connected the Raspberry Pi through Wi-Fi and used SSH to access it.
+
+    - Steps to Setup Wi-Fi Connection:
+        - Install Angry IP Scanner.
+        - Use Angry IP Scanner to find the Raspberry Pi's IP address.
+        - Connect via SSH:
+
+       ``` bash
+
+        ssh pi@IP_ADDRESS
+       ```
+
+10. Serial Communication with Arduino Mega
+
+    - Used nodes in ROS to send serial commands from Raspberry Pi to Arduino Mega to control motor speed, direction, and mode of operation (open loop or closed loop).
+
+**Coming Up ...**  SLAM Implementation: Use the RPLidar to map a room and send serial commands from the Pi to the Arduino Mega to control the motors accordingly.
+
+
