@@ -3,7 +3,7 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
 
 # Progress
 - Designing the 3D model of the robot chassis using Autodesk inventor. [View the image](https://discordapp.com/channels/1109024319046164490/1272787350056996927/1275323132995043359)
-- Installing Docker, pulling the image containing the Robot Operating System(ROS) and creating a container.Follow the steps [here](https://github.com/roboticsdojo/rdj-2024-docker/tree/v1.1.0?tab=readme-ov-file). Another option was setting up Ubuntu natively and installing ROS to your PC. 
+- Installing Docker, pulling the image containing the Robot Operating System(ROS) and creating a container.Follow the steps [here](https://github.com/roboticsdojo/rdj-2024-docker/tree/v1.1.0?tab=readme-ov-file).    A     Another option was setting up Ubuntu natively and installing ROS to your PC. 
 - Creating a 3D model of the robot in ROS.
       - The .urdf file is used to describe the structure of the robot 
       - sudo apt install ros-foxy-xacro ros-foxy-joint-state-publisher-gui (to install xacro and joint state publisher gui.
@@ -21,7 +21,7 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
             ``` bash
               ros2 run joint_state_publisher_gui joint_state_publisher_gui
             ```
-- Simulate your bot using Gazebo.
+          - Simulate your bot using Gazebo.
     - Driving the virtual robot.
       1. Launch robot_state_publisher in sim mode. (Allows all running nodes to be synchronized with Gazebo).
       - ros2 launch your_package your_launch_file use_sim_time:=true
