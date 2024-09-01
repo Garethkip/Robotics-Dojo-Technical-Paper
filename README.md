@@ -3,8 +3,8 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
 
 # Progress
 - Designing the 3D model of the robot chassis using Autodesk inventor. [View the image](https://discordapp.com/channels/1109024319046164490/1272787350056996927/1275323132995043359)
-    Creating a 3D model of the robot.
-      -  The .urdf file is used to describe the structure of the robot 
+   - Creating a 3D model of the robot.
+      - The .urdf file is used to describe the structure of the robot 
       - sudo apt install ros-foxy-xacro ros-foxy-joint-state-publisher-gui (to install xacro and joint state publisher gui.
       - colcon build --symlink-install (allows the package to be built automaticly after editing and needs to be run again only when a new file has been created).
       - Everytime you make a change you run ( ros2 launch your_package your_launch_file)
