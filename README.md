@@ -47,13 +47,13 @@ ros2 launch your_package your_launch_file
 ``` bash
     ros2 run joint_state_publisher_gui joint_state_publisher_gui
 ```
-4. Simulate the Robot with Gazebo
+### 4. Simulate the Robot with Gazebo
 
-    - Launch Robot State Publisher in Sim Mode:
+  - Launch Robot State Publisher in Sim Mode:
 
    ``` bash
       ros2 launch your_package your_launch_file use_sim_time:=true
-    ```
+   ```
    -  Check if it worked by running:
 
 ``` bash
@@ -78,47 +78,46 @@ ros2 run gazebo_ros spawn_entity.py -topic topic_name -entity your_bot_name
 ``` bash
     ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
-5. Hardware Control with Arduino Mega
+### 5. Hardware Control with Arduino Mega
 
-    - Powered a 12V DC motor using an Arduino Mega and L298N motor driver.
+  - Powered a 12V DC motor using an Arduino Mega and L298N motor driver.
 
-    - Controlled motor speed and direction using PWM (Pulse Width Modulation).
+  - Controlled motor speed and direction using PWM (Pulse Width Modulation).
 
-    - Encoder Ratio: 1:44 (Revolutions of encoder to motor shaft).
+  - Encoder Ratio: 1:44 (Revolutions of encoder to motor shaft).
 
-6. Physical Assembly
+### 6. Physical Assembly
 
    - Laser cut the chassis using a 2D drawing PDF Drawing.
    - Assembled parts using screws, bolts, and a glue gun.
 
-7. ROS Communication
+### 7. ROS Communication
 
-    - Created nodes (Publisher and Subscriber) in ROS that communicate over a topic.
+  - Created nodes (Publisher and Subscriber) in ROS that communicate over a topic.
 
-8. Mapping & Control with RPLidar
+### 8. Mapping & Control with RPLidar
 
    - Used RPLidar to scan and display a 2D image of the environment in Gazebo.
    - Implemented PID control for two motors.
 
-9. Raspberry Pi Setup
+### 9. Raspberry Pi Setup
 
-    - Installed Ubuntu on an SD card and inserted it into the Raspberry Pi.
+  - Installed Ubuntu on an SD card and inserted it into the Raspberry Pi.
 
-    - Connected the Raspberry Pi through Wi-Fi and used SSH to access it.
+  - Connected the Raspberry Pi through Wi-Fi and used SSH to access it.
 
-    - Steps to Setup Wi-Fi Connection:
-        - Install Angry IP Scanner.
-        - Use Angry IP Scanner to find the Raspberry Pi's IP address.
-        - Connect via SSH:
+  - Steps to Setup Wi-Fi Connection:
+      - Install Angry IP Scanner.
+      - Use Angry IP Scanner to find the Raspberry Pi's IP address.
+      - Connect via SSH:
 
-       ``` bash
+     ``` bash
 
-        ssh pi@IP_ADDRESS
-       ```
+      ssh pi@IP_ADDRESS
+     ```
 
-10. Serial Communication with Arduino Mega
-
-    - Used nodes in ROS to send serial commands from Raspberry Pi to Arduino Mega to control motor speed, direction, and mode of operation (open loop or closed loop).
+### 10. Serial Communication with Arduino Mega
+  - Used nodes in ROS to send serial commands from Raspberry Pi to Arduino Mega to control motor speed, direction, and mode of operation (open loop or closed loop).
 
 **Coming Up ...**  SLAM Implementation: Use the RPLidar to map a room and send serial commands from the Pi to the Arduino Mega to control the motors accordingly.
 
