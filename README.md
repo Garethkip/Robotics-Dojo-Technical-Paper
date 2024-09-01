@@ -18,10 +18,10 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
           5. Save and exit
           - Now with every new shell you open, it will source automatically launch rviz2 to visulaize your model.
           - When there's no transform in the left and right wheels, run the following:
-            ``` bash
-              ros2 run joint_state_publisher_gui joint_state_publisher_gui
-            ```
-          - Simulate your bot using Gazebo.
+  ``` bash
+  ros2 run joint_state_publisher_gui joint_state_publisher_gui
+  ```
+  - Simulate your bot using Gazebo.
 
 - Driving the virtual robot.
       1. Launch robot_state_publisher in sim mode. (Allows all running nodes to be synchronized with Gazebo).
@@ -39,7 +39,7 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
       3. Spawn robot in Gazebo with spawn script.
       - Spawn your bot model in Gazebo, but it won't have the right color or be able to move
          ``` bash
-         ros2 run gazebo_ros spawn_entity.py -topic topic_name -entity your_bot_name
+        ros2 run gazebo_ros spawn_entity.py -topic topic_name -entity your_bot_name
          ```
       - Add gazebo references to your xacro files that describe the parts' colors. Use the mul tag inside the gazebo reference to add a small value of friction on parts that require it like castor wheels.      
       4. ROS2 control.
@@ -67,7 +67,7 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
       2. Open the app and find the Raspberry Pi IP address and copy it.
       3. Run the following command on your Command Prompt
           ``` bash
-         ssh pi@IP_ADDRESS
+          ssh pi@IP_ADDRESS
           ```
       5. You're now in the Pi and can now create and edit the files.
 - Use nodes in ROS to send serial commands from Raspberry Pi to Arduino Mega which controls 2 motors in their speeds, direction mode of operation (open loop or closed loop).
