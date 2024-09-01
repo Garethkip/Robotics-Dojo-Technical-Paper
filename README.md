@@ -23,7 +23,7 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
             ```
         - Simulate your bot using Gazebo.
 
-  - Driving the virtual robot.
+- Driving the virtual robot.
       1. Launch robot_state_publisher in sim mode. (Allows all running nodes to be synchronized with Gazebo).
       - ros2 launch your_package your_launch_file use_sim_time:=true
       - Check if it worked by opening a new terminal and running :
