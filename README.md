@@ -36,22 +36,18 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
         ``` bash
         ros2 launch gazebo_ros gazebo.launch.py
         ```
-      
       3. Spawn robot in Gazebo with spawn script.
       - Spawn your bot model in Gazebo, but it won't have the right color or be able to move
          ``` bash
          ros2 run gazebo_ros spawn_entity.py -topic topic_name -entity your_bot_name
          ```
-      - Add gazebo references to your xacro files that describe the parts' colors. Use the mul tag inside the gazebo reference to add a small value of friction on parts that require it like castor wheels.
-      
-      5. ROS2 control.
-      - Create a xacro file for control. Use the gazebo tag around the plugin tag which will contain information of differential driving i.e wheel joint, separation and diameter information, limits and output.
-      
+      - Add gazebo references to your xacro files that describe the parts' colors. Use the mul tag inside the gazebo reference to add a small value of friction on parts that require it like castor wheels.      
+      4. ROS2 control.
+      - Create a xacro file for control. Use the gazebo tag around the plugin tag which will contain information of differential driving i.e wheel joint, separation and diameter information, limits and output.      
       5. Use your keyboard to send motion commands. 
          ``` bash
          ros2 run teleop_twist_keyboard teleop_twist_keyboard
-         ```
-      
+         ```    
       6. Use RViz to visualise the moving bot in Gazebo.
       - Launch RViz
         ``` bash
