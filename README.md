@@ -5,10 +5,10 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
 - Designing the 3D model of the robot chassis using Autodesk inventor. [View the image](https://discordapp.com/channels/1109024319046164490/1272787350056996927/1275323132995043359)
 - Installing Docker, pulling the image containing the Robot Operating System(ROS) and creating a container.Follow the steps [here](https://github.com/roboticsdojo/rdj-2024-docker/tree/v1.1.0?tab=readme-ov-file).    A     Another option was setting up Ubuntu natively and installing ROS to your PC. 
 - Creating a 3D model of the robot in ROS.
-      - The .urdf file is used to describe the structure of the robot 
+      - The .urdf file is used to describe the structure of the robot.
       - sudo apt install ros-foxy-xacro ros-foxy-joint-state-publisher-gui (to install xacro and joint state publisher gui.
       - colcon build --symlink-install (allows the package to be built automaticly after editing and needs to be run again only when a new file has been created).
-      - Everytime you make a change you run ( ros2 launch your_package your_launch_file)
+      - Everytime you make a change you run ( ros2 launch your_package your_launch_file).
       - The purpose of the source command and how to use it is listed below : 
           1. Open your terminal
           2. Write the command --> gedit ~/.bashrc
@@ -17,11 +17,11 @@ Contains all details and steps taken in the design of Robot for the Robotics Doj
           4. Go under that line and write --> source [YOUR PATH]
           5. Save and exit
           - Now with every new shell you open, it will source automatically launch rviz2 to visulaize your model.
-             - When there's no transform in the left and right wheels, run the following:
+          - When there's no transform in the left and right wheels, run the following:
             ``` bash
               ros2 run joint_state_publisher_gui joint_state_publisher_gui
             ```
-        - Simulate your bot using Gazebo.
+          - Simulate your bot using Gazebo.
 
 - Driving the virtual robot.
       1. Launch robot_state_publisher in sim mode. (Allows all running nodes to be synchronized with Gazebo).
