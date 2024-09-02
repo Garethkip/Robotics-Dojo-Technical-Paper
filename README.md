@@ -85,6 +85,28 @@ ros2 run gazebo_ros spawn_entity.py -topic topic_name -entity your_bot_name
   - Controlled motor speed and direction using PWM (Pulse Width Modulation).
 
   - Encoder Ratio: 1:44 (Revolutions of encoder to motor shaft).
+    
+  - use the code fiom `github.com/joshnewans/ros_arduino_bridge`
+    ``` bash
+    sudo apt install python3-serial
+    ```
+  - Send Serial Commands
+    ``` bash
+      miniterm -e /dev/ttyUSB0 57600
+    ```
+  - Equation relating encoder counts to revolutions of motor shaft: (counts/sec)*1/(counts/rev)=(rev/sec).
+    
+    ``` bash
+    git clone https://github.com/joshnewans/serial_motor_demo.git
+     ```
+  - Tell the Pi to listen on a topic for motor speeds and send it to the Arduino.
+    ``` bash
+    ros2 run serial_motor_demo driver --ros-args -p serial_port:=/dev/ttyUSB0 -p baud rate:=57600 -p loop_rate:=30 -p encoder_cpr:=3450
+    ```
+  - Control the motor speeds through a gui
+    ``` bash
+      ros2 run serial_motor demo_gui 
+    ```
 
 ### 6. Physical Assembly
 
